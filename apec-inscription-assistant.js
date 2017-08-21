@@ -16,39 +16,21 @@ new Vue({
             "V": "VIERNES",
             "S": "SÁBADO",
             "D": "DOMINGO"
-        },
-        coordinates: {
-            x: 0,
-            y: 0
-        },
-        secondDay: ""
+        }
     },
     mounted() {
-        $(document).on("mousemove", event => {
-            this.coordinates = {
-                x: event.screenX,
-                y: event.screenY
-            }
-        });
-
         this.run();
-
-
     },
     methods: {
         run() {
-            // $("tr[name ^= 'TRHorario']")
             $("tr[name ^= 'TRHorario'] input[name ^= 'chk']").each((index, element) => {
                 let splitedUrl = $(element).attr("onclick").split("&")
                 this.parseUrl(splitedUrl);
-                // console.log(element);
             })
 
             $("tr[name ^= 'TRHorario']").mouseenter(e => {
                 let index = $("tr[name ^= 'TRHorario']").index(e.currentTarget);
                 $("#tableOferta").append(this.createTableInfo(index, e))
-                    // this.createTableInfo(index, e)
-                    // console.log(e);
             }).mouseleave(e => {
                 $("#table-details").remove();
                 $(".up-arrow").remove();
@@ -57,7 +39,6 @@ new Vue({
         },
         parseUrl(splitedUrl) {
             let data = this.extractData(splitedUrl);
-
             this.courseInformation.push(data)
         },
         extractData(splitedUrl) {
@@ -89,8 +70,7 @@ new Vue({
         createTableInfo(index, event) {
             let data = this.courseInformation[index];
             let position = $(event.currentTarget).position()
-                // const day = this.getDayOfWeek(data['hrarel']);
-            const day = this.getDayOfWeek2(data['hrarel'], event.currentTarget, index);
+            const day = this.getDayOfWeek(data['hrarel'], event.currentTarget, index);
             let secundRow = "";
             if (data["hrarel"].includes("-")) {
                 secundRow = this.generateSecundRow(data);
@@ -134,16 +114,7 @@ new Vue({
                         <td>${data['endHourTwo']}</td>
                     </tr>`
         },
-        getDayOfWeek(day) {
-            if (day.includes("-")) {
-                let days = day.split("-");
-                this.secundDay = this.daysOfWeek[days[1]];
-                return `${this.daysOfWeek[days[0]]} Y ${this.secundDay}`
-            }
-            this.secundDay = "";
-            return this.daysOfWeek[day];
-        },
-        getDayOfWeek2(day, element, index) {
+        getDayOfWeek(day, element, index) {
             let firstDay = "";
             let secundDay = "";
             if (day.includes("-")) {
@@ -155,7 +126,6 @@ new Vue({
             } else {
                 firstDay = this.daysOfWeek[day] + index;
                 this.courseInformation[index]["dayOne"] = this.daysOfWeek[day];
-                this.secundDay = "";
             }
 
             if (firstDay) {
