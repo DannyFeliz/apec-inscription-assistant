@@ -77,7 +77,6 @@ function checkVisibility() {
 function run() {
     $("tr[name ^= 'TRHorario'] input[name ^= 'chk']").each((index, element) => {
         let url = $(element).attr("onclick");
-        debugger;
         if (!url) return;
         let splitedUrl = url.split("&")
         parseUrl(splitedUrl);
@@ -178,7 +177,6 @@ function generateSecundRow(data) {
 function getDayOfWeek(day, element, index) {
     let firstDay = "";
     let secundDay = "";
-    debugger;
     if (day.includes("-")) {
         let days = day.split("-");
         firstDay = daysOfWeek[days[0]] + index;
@@ -204,7 +202,6 @@ function getDayOfWeek(day, element, index) {
 }
 
 function extractDate(selector, element) {
-    debugger;
     selector = `#${selector.replace("Á", "A").replace("É", "E")}`;
     let hours = $(element).find(selector).text().replace(/[^\d:/\s]/g, "");
     hours = hours.split(" / ");
@@ -215,7 +212,6 @@ function extractDate(selector, element) {
 }
 
 function extractHours(hour) {
-    debugger;
     let splitedHour = hour.split(":");
     hour = Number(splitedHour[0]);
     let meridiem = " AM";
