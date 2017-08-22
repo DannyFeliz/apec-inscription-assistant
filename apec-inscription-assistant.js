@@ -51,6 +51,7 @@ let daysOfWeek = {
     "D": "DOMINGO"
 };
 const MAX_HEIGHT_ALLOWED = 422;
+alert("¡Asistente activado!");
 
 $("tr[name ^= 'trOferta'] td input[name ^= 'chk']").on("change", e => {
     checkVisibility();
