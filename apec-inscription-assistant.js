@@ -54,27 +54,23 @@ const MAX_HEIGHT_ALLOWED = 422;
 
 $("tr[name ^= 'trOferta'] td input[name ^= 'chk']").on("change", e => {
     checkVisibility();
-    console.log("Changed");
 })
 
 function checkVisibility() {
-    // setTimeout(() => {
     let idInterval = setInterval(() => {
         if (!$("#ImgLoading").is(":visible")) {
-            console.log("Enter");
             $("#divOfertaAcademica").removeClass("scroll2").addClass("scroll3");
             if ($("#divOfertaAcademica").height() > MAX_HEIGHT_ALLOWED) {
                 $("#divOfertaAcademica").attr("style", "overflow:overlay")
             }
             clearInterval(idInterval);
             courseInformation = [];
-            run();
+            init();
         }
     }, 1000);
-    // }, 500);
 }
 
-function run() {
+function init() {
     $("tr[name ^= 'TRHorario'] input[name ^= 'chk']").each((index, element) => {
         let url = $(element).attr("onclick");
         if (!url) return;
