@@ -3,8 +3,8 @@
 
 
 ## Screenshots
-![example 2](https://raw.githubusercontent.com/DannyFeliz/apec-inscription-assistant/master/examples-imgs/example1.png?token=AFNRjW2JQHrdMVDag7LdW0UPJV_oXe1Jks5Zo9u8wA%3D%3D)
+![](https://github.com/DannyFeliz/apec-inscription-assistant/blob/master/examples-imgs/example1.png?raw=true)
 
 <hr>
 
-![example 2](https://raw.githubusercontent.com/DannyFeliz/apec-inscription-assistant/master/examples-imgs/example2.png?token=AFNRjZVpwrqxKNxA9yhemtcv7Rt5VZtMks5Zo9vZwA%3D%3D)
+![](https://github.com/DannyFeliz/apec-inscription-assistant/blob/master/examples-imgs/example2.png?raw=true)
